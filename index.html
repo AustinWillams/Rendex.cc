@@ -27,10 +27,17 @@
                             600: '#1a1a1a',
                         },
                         light: {
-                            900: '#f5f5f5',
-                            800: '#e5e5e5',
-                            700: '#d4d4d4',
-                            600: '#a3a3a3',
+                            900: '#f3f4f6', // Softer gray
+                            800: '#ffffff',
+                            700: '#e5e7eb',
+                            600: '#d1d5db',
+                            text: '#1f2937',
+                            muted: '#6b7280'
+                        },
+                        midnight: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
                         },
                         status: {
                             updated: '#10b981',
@@ -47,8 +54,7 @@
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'slide-up': 'slideUp 0.3s ease-out forwards',
-                        'scale-in': 'scaleIn 0.2s ease-out forwards',
+                        'modal-in': 'modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                         'check-bounce': 'checkBounce 0.5s ease-out forwards',
                     },
                     keyframes: {
@@ -56,13 +62,9 @@
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
                         },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        scaleIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        modalIn: {
+                            '0%': { opacity: '0', transform: 'translate(-50%, -50%) scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
                         },
                         checkBounce: {
                             '0%': { transform: 'scale(0)' },
@@ -83,81 +85,62 @@
             background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
+        /* Light Mode Overrides */
         body[data-theme="light"] {
-            background-color: #f5f5f5;
-            color: #1a1a1a;
+            background-color: #f3f4f6;
+            color: #1f2937;
         }
-
         body[data-theme="light"] .glass {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(12px);
         }
-
         body[data-theme="light"] .glass-nav {
-            background: rgba(245, 245, 245, 0.9);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(243, 243, 243, 0.85);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-
-        body[data-theme="light"] .bg-dark-900,
-        body[data-theme="light"] .bg-dark-800,
-        body[data-theme="light"] .bg-dark-700,
-        body[data-theme="light"] .bg-dark-600 {
-            background-color: #ffffff;
-        }
-
-        body[data-theme="light"] .bg-\[\#161618\] {
-            background-color: #f0f0f0;
-        }
-
+        body[data-theme="light"] .bg-dark-900 { background-color: #ffffff; }
+        body[data-theme="light"] .bg-dark-800 { background-color: #f9fafb; }
+        body[data-theme="light"] .bg-dark-700 { background-color: #ffffff; }
+        body[data-theme="light"] .bg-\[\#161618\] { background-color: #f3f4f6; border-color: #e5e7eb; }
         body[data-theme="light"] .border-white\/5,
-        body[data-theme="light"] .border-white\/10 {
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body[data-theme="light"] .text-white {
-            color: #1a1a1a;
-        }
-
-        body[data-theme="light"] .text-gray-300,
-        body[data-theme="light"] .text-gray-400,
-        body[data-theme="light"] .text-gray-500,
-        body[data-theme="light"] .text-gray-600 {
-            color: #525252;
-        }
-
-        body[data-theme="light"] .executor-card {
-            background-color: #f0f0f0;
-        }
-
+        body[data-theme="light"] .border-white\/10 { border-color: rgba(0, 0, 0, 0.08); }
+        body[data-theme="light"] .text-white { color: #111827; }
+        body[data-theme="light"] .text-gray-300 { color: #4b5563; }
+        body[data-theme="light"] .text-gray-400 { color: #6b7280; }
+        body[data-theme="light"] .text-gray-500 { color: #9ca3af; }
+        body[data-theme="light"] .executor-card { background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         body[data-theme="light"] .version-badge,
-        body[data-theme="light"] .unc-badge {
-            background-color: #e5e5e5;
-            color: #525252;
-            border-color: #d4d4d4;
-        }
+        body[data-theme="light"] .unc-badge { background-color: #f3f4f6; color: #4b5563; border-color: #e5e7eb; }
+        body[data-theme="light"] .code-block { background: #1e1e1e; border-color: #333; color: #d4d4d4; }
+        body[data-theme="light"] .stat-item { color: #6b7280; }
+        body[data-theme="light"] .stat-value { color: #111827; }
+        body[data-theme="light"] input { background-color: #ffffff; border-color: #e5e7eb; color: #111827; }
+        body[data-theme="light"] .bg-purple-900\/20 { background-color: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.2); }
+        body[data-theme="light"] .text-purple-200 { color: #6b21a8; }
+        body[data-theme="light"] .text-purple-400 { color: #9333ea; }
 
-        body[data-theme="light"] .code-block {
-            background: #f0f0f0;
-            border-color: #d4d4d4;
+        /* Midnight Mode Overrides */
+        body[data-theme="midnight"] {
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
-
-        body[data-theme="blue"] {
-            background-color: #0a1628;
-            color: #ffffff;
+        body[data-theme="midnight"] .glass {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        body[data-theme="blue"] .glass {
-            background: rgba(14, 165, 233, 0.1);
-            border: 1px solid rgba(14, 165, 233, 0.2);
+        body[data-theme="midnight"] .glass-nav {
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        body[data-theme="blue"] .glass-nav {
-            background: rgba(10, 22, 40, 0.9);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-        }
+        body[data-theme="midnight"] .bg-dark-900 { background-color: #1e293b; }
+        body[data-theme="midnight"] .bg-dark-800 { background-color: #334155; }
+        body[data-theme="midnight"] .bg-dark-700 { background-color: #1e293b; }
+        body[data-theme="midnight"] .border-white\/5,
+        body[data-theme="midnight"] .border-white\/10 { border-color: rgba(255, 255, 255, 0.05); }
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -187,9 +170,16 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
+            background: linear-gradient(135deg, #000000 0%, #0ea5e9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        
+        body[data-theme="dark"] .text-gradient,
+        body[data-theme="midnight"] .text-gradient {
+             background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
         }
 
         .btn-glow {
@@ -218,7 +208,7 @@
         .code-block {
             background: #0f0f11;
             border: 1px solid #1f1f22;
-            font-family: 'Almarena', monospace;
+            font-family: 'JetBrains Mono', 'Almarena', monospace;
         }
 
         .bg-grid {
@@ -253,7 +243,7 @@
             transform: rotate(90deg);
         }
 
-        /* BADGES - Fully Rounded (Pill Shape) */
+        /* BADGES */
         .status-badge {
             font-size: 0.75rem;
             font-weight: 600;
@@ -324,26 +314,25 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
+            /* Transform handled by animation class */
             z-index: 100;
             background: #1a1a1a;
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            opacity: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 320px;
         }
         .theme-modal.active {
             display: block;
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
+            animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .theme-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
             z-index: 99;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -353,28 +342,28 @@
             opacity: 1;
         }
 
-        /* Copy Button Styles */
+        /* Copy Button */
         .copy-btn {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #a3a3a3;
-            padding: 8px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
         }
         .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
         }
         .copy-btn.copied {
             background: rgba(16, 185, 129, 0.2);
@@ -396,28 +385,42 @@
     <div class="theme-modal" id="themeModal">
         <div class="flex justify-between items-center mb-6">
             <h3 class="text-lg font-bold text-white">Select Theme</h3>
-            <button onclick="toggleThemeModal()" class="text-gray-400 hover:text-white transition-colors">
+            <button onclick="toggleThemeModal()" class="text-gray-400 hover:text-white transition-colors p-1 hover:bg-white/5 rounded-lg">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="grid grid-cols-3 gap-3">
-            <button onclick="setTheme('dark')" class="theme-option p-4 rounded-xl bg-dark-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-105">
-                <div class="w-8 h-8 rounded-full bg-dark-800 mx-auto mb-2 flex items-center justify-center">
+        <div class="grid grid-cols-2 gap-3">
+            <button onclick="setTheme('dark')" class="theme-option p-4 rounded-xl bg-dark-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
+                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
+                <div class="w-10 h-10 rounded-full bg-dark-800 mx-auto mb-3 flex items-center justify-center border border-white/5 group-hover:border-brand-500/50">
                     <i class="fas fa-moon text-brand-400"></i>
                 </div>
-                Dark
+                <div class="font-semibold">Dark</div>
+                <div class="text-xs text-gray-500 mt-1">Default</div>
             </button>
-            <button onclick="setTheme('light')" class="theme-option p-4 rounded-xl bg-gray-200 border border-white/10 hover:border-brand-500 text-gray-800 text-sm transition-all duration-200 hover:scale-105">
-                <div class="w-8 h-8 rounded-full bg-white mx-auto mb-2 flex items-center justify-center">
+            <button onclick="setTheme('light')" class="theme-option p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-brand-500 text-gray-800 text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
+                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
+                <div class="w-10 h-10 rounded-full bg-white mx-auto mb-3 flex items-center justify-center border border-gray-200 group-hover:border-brand-500/50 shadow-sm">
                     <i class="fas fa-sun text-yellow-500"></i>
                 </div>
-                Light
+                <div class="font-semibold">Light</div>
+                <div class="text-xs text-gray-500 mt-1">Clean</div>
             </button>
-            <button onclick="setTheme('blue')" class="theme-option p-4 rounded-xl bg-blue-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-105">
-                <div class="w-8 h-8 rounded-full bg-blue-800 mx-auto mb-2 flex items-center justify-center">
+            <button onclick="setTheme('midnight')" class="theme-option p-4 rounded-xl bg-midnight-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
+                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
+                <div class="w-10 h-10 rounded-full bg-midnight-800 mx-auto mb-3 flex items-center justify-center border border-white/5 group-hover:border-brand-500/50">
+                    <i class="fas fa-cloud-moon text-blue-400"></i>
+                </div>
+                <div class="font-semibold">Midnight</div>
+                <div class="text-xs text-gray-500 mt-1">Deep Blue</div>
+            </button>
+            <button onclick="setTheme('blue')" class="theme-option p-4 rounded-xl bg-blue-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
+                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
+                <div class="w-10 h-10 rounded-full bg-blue-800 mx-auto mb-3 flex items-center justify-center border border-white/5 group-hover:border-brand-500/50">
                     <i class="fas fa-tint text-blue-400"></i>
                 </div>
-                Blue
+                <div class="font-semibold">Blue</div>
+                <div class="text-xs text-gray-500 mt-1">Vibrant</div>
             </button>
         </div>
     </div>
@@ -429,7 +432,7 @@
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="scrollToSection('home')">
                     <div class="relative w-10 h-10 flex items-center justify-center">
                         <div class="absolute inset-0 bg-brand-500/20 blur-lg rounded-full group-hover:bg-brand-500/40 transition-all"></div>
-                        <img src="https://github.com/AustinWillams/Rendex.cc/blob/main/1b5ee92125d256483989d1c0aa348a89.webp?raw=true" alt="Rendex Logo" class="w-8 h-8 relative z-10 drop-shadow-[0_0_8px_rgba(14,165,233,0.8)]">
+                        <img src="https://github.com/AustinWillams/Rendex.cc/blob/main/LogoNoBackground.png?raw=true" alt="Rendex Logo" class="w-8 h-8 relative z-10 drop-shadow-[0_0_8px_rgba(14,165,233,0.8)]">
                     </div>
                     <span class="text-2xl font-bold tracking-tight text-white group-hover:text-brand-400 transition-colors">Rendex</span>
                 </div>
@@ -486,12 +489,12 @@
                         </div>
                         <span class="text-xs text-gray-500 font-mono">loader.luau</span>
                     </div>
-                    <div class="p-4 sm:p-6 text-left overflow-x-auto">
+                    <div class="p-4 sm:p-6 text-left overflow-x-auto relative">
                         <code class="text-sm sm:text-base text-brand-400 font-mono break-all" id="loadstring-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotWhyLclc/Rendex/refs/heads/main/Loader.luau"))()</code>
+                        <button onclick="copyCode()" class="copy-btn" id="copyBtn" title="Copy to Clipboard">
+                            <i class="far fa-copy" id="copyIcon"></i>
+                        </button>
                     </div>
-                    <button onclick="copyCode()" class="copy-btn" id="copyBtn" title="Copy to Clipboard">
-                        <i class="far fa-copy" id="copyIcon"></i>
-                    </button>
                 </div>
                 <p id="copy-feedback" class="text-green-400 text-sm mt-2 h-5 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2">
                     <i class="fas fa-check-circle"></i> Copied to clipboard!
@@ -638,7 +641,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div class="flex items-center gap-2 mb-4 md:mb-0">
-                    <img src="https://github.com/AustinWillams/Rendex.cc/blob/main/1b5ee92125d256483989d1c0aa348a89.webp?raw=true" alt="Rendex" class="w-6 h-6 drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]">
+                    <img src="https://github.com/AustinWillams/Rendex.cc/blob/main/LogoNoBackground.png?raw=true" alt="Rendex" class="w-6 h-6 drop-shadow-[0_0_5px_rgba(14,165,233,0.8)]">
                     <span class="text-xl font-bold text-white">Rendex</span>
                 </div>
                 <div class="flex space-x-6">
@@ -842,8 +845,23 @@
         function toggleThemeModal() {
             const modal = document.getElementById('themeModal');
             const overlay = document.getElementById('themeOverlay');
-            modal.classList.toggle('active');
-            overlay.classList.toggle('active');
+            
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    overlay.style.display = 'none';
+                }, 300);
+            } else {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+                // Small delay to allow display:block to apply before adding active class for animation
+                setTimeout(() => {
+                    modal.classList.add('active');
+                    overlay.classList.add('active');
+                }, 10);
+            }
         }
 
         function setTheme(theme) {
@@ -851,8 +869,11 @@
             body.setAttribute('data-theme', theme);
             
             if (theme === 'light') {
-                body.style.backgroundColor = '#f5f5f5';
-                body.style.color = '#1a1a1a';
+                body.style.backgroundColor = '#f3f4f6';
+                body.style.color = '#1f2937';
+            } else if (theme === 'midnight') {
+                body.style.backgroundColor = '#0f172a';
+                body.style.color = '#e2e8f0';
             } else if (theme === 'blue') {
                 body.style.backgroundColor = '#0a1628';
                 body.style.color = '#ffffff';
