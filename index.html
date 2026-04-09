@@ -26,35 +26,14 @@
                             700: '#121212',
                             600: '#1a1a1a',
                         },
-                        light: {
-                            900: '#f3f4f6',
-                            800: '#ffffff',
-                            700: '#e5e7eb',
-                            600: '#d1d5db',
-                            text: '#1f2937',
-                            muted: '#6b7280'
-                        },
-                        midnight: {
-                            900: '#0f172a',
-                            800: '#1e293b',
-                            700: '#334155',
-                        },
-                        status: {
-                            updated: '#10b981',
-                            notupdated: '#ef4444'
-                        },
-                        purple: {
-                            900: '#2e1065',
-                            800: '#4c1d95',
-                            400: '#c084fc'
-                        }
                     },
                     fontFamily: {
                         almarena: ['Almarena', 'sans-serif'],
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'modal-in': 'modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'modal-in': 'modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'modal-out': 'modalOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                         'check-bounce': 'checkBounce 0.5s ease-out forwards',
                     },
                     keyframes: {
@@ -65,6 +44,10 @@
                         modalIn: {
                             '0%': { opacity: '0', transform: 'translate(-50%, -50%) scale(0.95)' },
                             '100%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
+                        },
+                        modalOut: {
+                            '0%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
+                            '100%': { opacity: '0', transform: 'translate(-50%, -50%) scale(0.95)' },
                         },
                         checkBounce: {
                             '0%': { transform: 'scale(0)' },
@@ -88,77 +71,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Light Mode Overrides */
-        body[data-theme="light"] {
-            background-color: #f3f4f6;
-            color: #1f2937;
-        }
-        body[data-theme="light"] .glass {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(12px);
-        }
-        body[data-theme="light"] .glass-nav {
-            background: rgba(243, 243, 243, 0.85);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        body[data-theme="light"] .bg-dark-900 { background-color: #ffffff; }
-        body[data-theme="light"] .bg-dark-800 { background-color: #f9fafb; }
-        body[data-theme="light"] .bg-dark-700 { background-color: #ffffff; }
-        body[data-theme="light"] .bg-\[\#161618\] { background-color: #f3f4f6; border-color: #e5e7eb; }
-        body[data-theme="light"] .border-white\/5,
-        body[data-theme="light"] .border-white\/10 { border-color: rgba(0, 0, 0, 0.08); }
-        body[data-theme="light"] .text-white { color: #111827; }
-        body[data-theme="light"] .text-gray-300 { color: #4b5563; }
-        body[data-theme="light"] .text-gray-400 { color: #6b7280; }
-        body[data-theme="light"] .text-gray-500 { color: #9ca3af; }
-        body[data-theme="light"] .executor-card { background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        body[data-theme="light"] .version-badge,
-        body[data-theme="light"] .unc-badge,
-        body[data-theme="light"] .status-badge { background-color: #f3f4f6; border-color: #e5e7eb; }
-        body[data-theme="light"] .status-updated { color: #059669; background-color: #d1fae5; border-color: #6ee7b7; }
-        body[data-theme="light"] .status-not-updated { color: #dc2626; background-color: #fee2e2; border-color: #fca5a5; }
-        body[data-theme="light"] .code-block { background: #1e1e1e; border-color: #333; color: #d4d4d4; }
-        body[data-theme="light"] .stat-item { color: #6b7280; }
-        body[data-theme="light"] .stat-value { color: #111827; }
-        body[data-theme="light"] input { background-color: #ffffff; border-color: #e5e7eb; color: #111827; }
-        body[data-theme="light"] .bg-purple-900\/20 { background-color: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.2); }
-        body[data-theme="light"] .text-purple-200 { color: #6b21a8; }
-        body[data-theme="light"] .text-purple-400 { color: #9333ea; }
-
-        /* Midnight Mode Overrides */
-        body[data-theme="midnight"] {
-            background-color: #0f172a;
-            color: #e2e8f0;
-        }
-        body[data-theme="midnight"] .glass {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        body[data-theme="midnight"] .glass-nav {
-            background: rgba(15, 23, 42, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        body[data-theme="midnight"] .bg-dark-900 { background-color: #1e293b; }
-        body[data-theme="midnight"] .bg-dark-800 { background-color: #334155; }
-        body[data-theme="midnight"] .bg-dark-700 { background-color: #1e293b; }
-        body[data-theme="midnight"] .border-white\/5,
-        body[data-theme="midnight"] .border-white\/10 { border-color: rgba(255, 255, 255, 0.05); }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1a1a1a;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0ea5e9;
-        }
-
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -172,17 +84,10 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #000000 0%, #0ea5e9 100%);
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        
-        body[data-theme="dark"] .text-gradient,
-        body[data-theme="midnight"] .text-gradient {
-             background: linear-gradient(135deg, #ffffff 0%, #0ea5e9 100%);
-             -webkit-background-clip: text;
-             -webkit-text-fill-color: transparent;
         }
 
         .btn-glow {
@@ -221,124 +126,6 @@
             mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
         }
 
-        /* Executor List Styles */
-        .executor-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-        
-        .executor-content {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .executor-card.expanded .executor-content {
-            max-height: 500px;
-            opacity: 1;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .executor-card.expanded .rotate-icon {
-            transform: rotate(90deg);
-        }
-
-        /* BADGES - All Pill Style */
-        .status-badge, .version-badge, .unc-badge, .price-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.125rem 0.5rem;
-            border-radius: 9999px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .status-updated {
-            background-color: rgba(16, 185, 129, 0.15);
-            color: #10b981;
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        .status-not-updated {
-            background-color: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-        .price-badge {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-        }
-        .version-badge {
-            background-color: #262626;
-            color: #a3a3a3;
-            border-color: #333;
-        }
-        .unc-badge {
-            background-color: #262626;
-            color: #a3a3a3;
-            border-color: #333;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        .unc-badge:hover {
-            background-color: #333;
-            border-color: #444;
-            color: #fff;
-        }
-        .unc-badge .s-letter {
-            color: #c084fc; /* Purple s */
-        }
-
-        .stat-item {
-            font-size: 0.8rem;
-            color: #9ca3af;
-        }
-        .stat-value {
-            color: #fff;
-            font-weight: 500;
-        }
-        .stat-good { color: #10b981; }
-        .stat-bad { color: #ef4444; }
-
-        /* Theme Modal */
-        .theme-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            z-index: 100;
-            background: #1a1a1a;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 320px;
-        }
-        .theme-modal.active {
-            display: block;
-            animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .theme-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            z-index: 99;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .theme-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
         /* Copy Button */
         .copy-btn {
             position: absolute;
@@ -370,6 +157,157 @@
         .copy-btn.copied i {
             animation: check-bounce 0.5s ease-out forwards;
         }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .tos-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .tos-modal.active {
+            display: block;
+            animation: modal-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .tos-modal.closing {
+            animation: modal-out 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .modal-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+
+        .tos-content {
+            padding: 24px;
+        }
+
+        .tos-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .tos-text {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #a3a3a3;
+            margin-bottom: 16px;
+        }
+
+        .tos-text strong {
+            color: #ffffff;
+        }
+
+        .tos-text ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 16px;
+        }
+
+        .tos-text li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .tos-text li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+        }
+
+        .tos-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .tos-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #0ea5e9;
+            cursor: pointer;
+        }
+
+        .tos-checkbox label {
+            font-size: 0.875rem;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .tos-agree-btn {
+            width: 100%;
+            background: #0ea5e9;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .tos-agree-btn.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .tos-agree-btn:hover {
+            background: #0284c7;
+        }
+
+        .tos-link {
+            color: #0ea5e9;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .tos-link:hover {
+            color: #38bdf8;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white">
@@ -377,47 +315,39 @@
     <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
     <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-    <!-- Theme Modal -->
-    <div class="theme-overlay" id="themeOverlay" onclick="toggleThemeModal()"></div>
-    <div class="theme-modal" id="themeModal">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-lg font-bold text-white">Select Theme</h3>
-            <button onclick="toggleThemeModal()" class="text-gray-400 hover:text-white transition-colors p-1 hover:bg-white/5 rounded-lg">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
-            <button onclick="setTheme('dark')" class="theme-option p-4 rounded-xl bg-dark-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
-                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
-                <div class="w-10 h-10 rounded-full bg-dark-800 mx-auto mb-3 flex items-center justify-center border border-white/5 group-hover:border-brand-500/50">
-                    <i class="fas fa-moon text-brand-400"></i>
-                </div>
-                <div class="font-semibold">Dark</div>
-                <div class="text-xs text-gray-500 mt-1">Default</div>
-            </button>
-            <button onclick="setTheme('light')" class="theme-option p-4 rounded-xl bg-gray-100 border border-gray-200 hover:border-brand-500 text-gray-800 text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
-                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
-                <div class="w-10 h-10 rounded-full bg-white mx-auto mb-3 flex items-center justify-center border border-gray-200 group-hover:border-brand-500/50 shadow-sm">
-                    <i class="fas fa-sun text-yellow-500"></i>
-                </div>
-                <div class="font-semibold">Light</div>
-                <div class="text-xs text-gray-500 mt-1">Clean</div>
-            </button>
-            <button onclick="setTheme('midnight')" class="theme-option p-4 rounded-xl bg-midnight-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
-                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
-                <div class="w-10 h-10 rounded-full bg-midnight-800 mx-auto mb-3 flex items-center justify-center border border-white/5 group-hover:border-brand-500/50">
-                    <i class="fas fa-cloud-moon text-blue-400"></i>
-                </div>
-                <div class="font-semibold">Midnight</div>
-                <div class="text-xs text-gray-500 mt-1">Deep Blue</div>
-            </button>
-            <button onclick="setTheme('blue')" class="theme-option p-4 rounded-xl bg-blue-900 border border-white/10 hover:border-brand-500 text-white text-sm transition-all duration-200 hover:scale-[1.02] group relative overflow-hidden">
-                <div class="absolute inset-0 bg-brand-500/0 group-hover:bg-brand-500/5 transition-colors"></div>
-                <div class="w-10 h-10 rounded-full bg-blue-800 mx-auto mb-3 flex items-center justify-center border border-white/5 group-hover:border-brand-500/50">
-                    <i class="fas fa-tint text-blue-400"></i>
-                </div>
-                <div class="font-semibold">Blue</div>
-                <div class="text-xs text-gray-500 mt-1">Vibrant</div>
+    <!-- TOS Modal -->
+    <div class="modal-overlay" id="tosOverlay" onclick="toggleTosModal()"></div>
+    <div class="tos-modal" id="tosModal">
+        <div class="tos-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="tos-title">Terms of Service</h3>
+                <button onclick="toggleTosModal()" class="text-gray-400 hover:text-white transition-colors p-1 hover:bg-white/5 rounded-lg">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="tos-text">
+                By using or interacting with this script, you agree to the following terms:
+            </div>
+
+            <div class="tos-text">
+                <ul>
+                    <li>We collect limited, non-personal execution data strictly for analytics and improvement purposes. This includes your country of origin.</li>
+                    <li>We do <strong>not</strong> collect or store any personally identifiable information (PII), such as your IP address, device identifiers, or any sensitive personal data.</li>
+                </ul>
+            </div>
+
+            <div class="tos-text">
+                Your privacy is respected, and all collected data remains minimal and non-invasive.
+            </div>
+
+            <label class="tos-checkbox">
+                <input type="checkbox" id="tosCheckbox" onchange="updateAgreeButton()">
+                <label for="tosCheckbox">I have read and agree to the Terms of Service</label>
+            </label>
+
+            <button id="agreeBtn" class="tos-agree-btn" onclick="agreeToTos()">
+                Agree & Continue
             </button>
         </div>
     </div>
@@ -438,14 +368,10 @@
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" onclick="scrollToSection('home')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
                         <a href="#games" onclick="scrollToSection('games')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Games</a>
-                        <a href="#executors" onclick="scrollToSection('executors')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Executors</a>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <button onclick="toggleThemeModal()" class="bg-dark-700 hover:bg-dark-600 border border-white/10 text-white px-4 py-2 rounded-full text-sm font-medium transition-all hidden sm:block">
-                        Themes
-                    </button>
                     <a href="https://discord.gg/X4GW8N5GdW" target="_blank" rel="noopener noreferrer" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-indigo-500/20 flex items-center gap-2 btn-glow">
                         <i class="fab fa-discord"></i> <span class="hidden sm:inline">Discord</span>
                     </a>
@@ -466,15 +392,10 @@
                 Keyless
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                Dominate with <br>
-                <span class="text-gradient">Rendex Script</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-10">
+                <span class="text-gradient-blue">Rendex</span><br>
+                <span class="text-2xl md:text-3xl lg:text-4xl text-gray-400 font-normal mt-2 block">Sleek and Optimistic</span>
             </h1>
-            
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
-                The most stable, undetected keyless script for Roblox. 
-                Designed for performance, built for winners.
-            </p>
 
             <div class="max-w-3xl mx-auto mb-12 group">
                 <div class="relative code-block rounded-xl overflow-hidden shadow-2xl shadow-brand-900/20 transition-all duration-300 group-hover:shadow-brand-500/10 group-hover:border-brand-500/30">
@@ -488,13 +409,16 @@
                     </div>
                     <div class="p-4 sm:p-6 text-left overflow-x-auto relative">
                         <code class="text-sm sm:text-base text-brand-400 font-mono break-all" id="loadstring-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotWhyLclc/Rendex/refs/heads/main/Loader.luau"))()</code>
-                        <button onclick="copyCode()" class="copy-btn" id="copyBtn" title="Copy to Clipboard">
+                        <button onclick="attemptCopy()" class="copy-btn" id="copyBtn" title="Copy to Clipboard">
                             <i class="far fa-copy" id="copyIcon"></i>
                         </button>
                     </div>
                 </div>
                 <p id="copy-feedback" class="text-green-400 text-sm mt-2 h-5 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2">
                     <i class="fas fa-check-circle"></i> Copied to clipboard!
+                </p>
+                <p class="text-gray-500 text-xs mt-3">
+                    By copying this script, you agree to our <span class="tos-link" onclick="toggleTosModal()">Terms of Service</span>
                 </p>
             </div>
 
@@ -524,7 +448,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Supported Games</h2>
-                <p class="text-gray-400">Optimized specifically for the best experiences.</p>
             </div>
 
             <div class="relative group max-w-5xl mx-auto">
@@ -542,94 +465,12 @@
                     </div>
 
                     <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                        <div class="flex items-center gap-3 mb-4">
-                            <i class="fas fa-car-side text-brand-400 text-2xl"></i>
+                        <div class="mb-4">
                             <h3 class="text-3xl font-bold text-white">Jailbreak</h3>
                         </div>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
-                            Experience Jailbreak like never before. Rendex provides seamless execution for all major Jailbreak scripts including combat advantages and movement enhancements.
-                        </p>
-                        
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 text-sm text-gray-300">
-                                <i class="fas fa-crosshairs text-brand-500"></i>
-                                <span>Silent Aim</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm text-gray-300">
-                                <i class="fas fa-eye text-brand-500"></i>
-                                <span>ESP</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm text-gray-300">
-                                <i class="fas fa-ban text-brand-500"></i>
-                                <span>No Lasers</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm text-gray-300">
-                                <i class="fas fa-running text-brand-500"></i>
-                                <span>Enable Roll Action</span>
-                            </div>
-                            <div class="flex items-center gap-3 text-sm text-gray-300">
-                                <i class="fas fa-arrow-up text-brand-500"></i>
-                                <span>Enable Jump Action</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Executor List Section -->
-    <section id="executors" class="py-20 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                <h2 class="text-2xl font-bold text-white">Script Executor Exploits</h2>
-                <div class="flex gap-2">
-                    <div class="relative">
-                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                        <input type="text" id="searchInput" onkeyup="filterExecutors()" placeholder="Search exploits..." class="bg-black border border-white/10 rounded-xl pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-brand-500/50 w-full sm:w-64 placeholder-gray-600">
-                    </div>
-                    <button class="bg-dark-700 border border-white/10 hover:bg-dark-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-2">
-                        <i class="fas fa-sliders-h"></i> <span class="hidden sm:inline">Filters</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Windows -->
-            <div class="mb-10 executor-category">
-                <h3 class="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
-                    <i class="fab fa-windows text-blue-500"></i> Windows Script Executor Exploits
-                </h3>
-                <div class="space-y-3" id="windows-list">
-                </div>
-            </div>
-
-            <!-- Mac -->
-            <div class="mb-10 executor-category">
-                <h3 class="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
-                    <i class="fab fa-apple text-gray-400"></i> Mac Script Executor Exploits
-                </h3>
-                <div class="space-y-3" id="mac-list">
-                </div>
-            </div>
-
-            <!-- Android -->
-            <div class="mb-10 executor-category">
-                <h3 class="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
-                    <i class="fab fa-android text-green-500"></i> Android Script Executor Exploits
-                </h3>
-                <div class="space-y-3" id="android-list">
-                </div>
-            </div>
-
-            <!-- iOS -->
-            <div class="mb-10 executor-category">
-                <h3 class="text-lg font-semibold text-gray-300 mb-4 flex items-center gap-2">
-                    <i class="fab fa-apple text-gray-400"></i> iOS Script Executor Exploits
-                </h3>
-                <div class="space-y-3" id="ios-list">
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -661,171 +502,14 @@
     </footer>
 
     <script>
-        const executors = {
-            windows: [
-                { name: "Madium", version: "Latest", unc: "sUNC", price: "", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://work.ink/2nLR/madium-install", discord: "https://discord.gg/olemad", purchase: null, stats: { sunc: "98%", unc: "98%", decompiler: true, multi: true } },
-                { name: "Volt", version: "1.2.10.3", unc: "sUNC", price: "$5.99 Weekly", updated: true, suncLink: "https://sunc.rubis.app/?scrap=FeAcn1vkz6qSkFSD&key=bdbA94gH0eHL2VeSdKlFBgQYoff3NU6c", website: "https://volt.place", discord: "https://discord.gg/volt", purchase: "https://volt.place", stats: { sunc: "98%", unc: "99%", decompiler: false, multi: true } },
-                { name: "Potassium", version: "2.0.8", unc: "sUNC", price: "$22.99 Lifetime", updated: true, suncLink: "https://sunc.rubis.app/?scrap=XhNSDf9pvaM1QDCj&key=t8prFCS4a302ynvLrglnYC4zfnrqhMpH", website: "https://potassium.pro/", discord: "https://discord.com/invite/potassium", purchase: "https://bloxproducts.com/?affiliate_key=weao#Potassium", stats: { sunc: "100%", unc: "99%", decompiler: true, multi: true } },
-                { name: "Wave", version: "NEW-1.2.1", unc: "sUNC", price: "$5.99 Weekly", updated: false, suncLink: "https://sunc.rubis.app/?scrap=sUSMILer2W4h6cEv&key=H4zy64gtK8cyHnjxH3sZUPLBfNHaGC4A", website: "https://getwave.gg/", discord: "https://discord.com/invite/rARhPpN7fY", purchase: "https://bloxproducts.com/?affiliate_key=weao#Wave", stats: { sunc: "100%", unc: "99%", decompiler: true, multi: true } },
-                { name: "Cosmic", version: "1.1.9.2", unc: "sUNC", price: "$9.99 Lifetime", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://www.cosmic.best/", discord: "https://www.cosmic.best/", purchase: "https://rapidkeys.net/product?id=cosmic", stats: { sunc: "100%", unc: "99%", decompiler: true, multi: true } },
-                { name: "Volcano", version: "v3.2.5.1", unc: "sUNC", price: "$5.97 Weekly", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://volcano.wtf/", discord: "https://volcano.wtf/discord", purchase: "https://gckeys.cc/product?slug=volcano-executor", stats: { sunc: "96%", unc: "99%", decompiler: true, multi: true } },
-                { name: "Isaeva", version: "1.3.1", unc: "sUNC", price: "$4.99 Weekly", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://getisaeva.xyz/login", discord: "https://discord.com/invite/Bqzumw4ZFC", purchase: "https://wyv.gg/product/isaeva-executor/", stats: { sunc: "100%", unc: "99%", decompiler: true, multi: true } },
-                { name: "Synapse Z", version: "1.0.1.6", unc: "sUNC", price: "$3.99 Weekly", updated: false, suncLink: "https://sunc.rubis.app/", website: "#", discord: "#", purchase: "#", stats: { sunc: "75%", unc: "80%", decompiler: false, multi: false } },
-                { name: "Velocity", version: "0.8.8", unc: "sUNC", price: "Free", updated: true, suncLink: "https://sunc.rubis.app/", website: "#", discord: "#", purchase: "#", stats: { sunc: "92%", unc: "94%", decompiler: true, multi: true } },
-                { name: "Seliware", version: "2.2.3", unc: "sUNC", price: "$3.99 Weekly", updated: false, suncLink: "https://sunc.rubis.app/", website: "#", discord: "#", purchase: "#", stats: { sunc: "70%", unc: "75%", decompiler: false, multi: true } },
-                { name: "Bunni.fun", version: "2.5.9 R1", unc: "sUNC (Key System)", price: "", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://bunni.fun", discord: "https://discord.gg/bunni", purchase: null, stats: { sunc: "60%", unc: "65%", decompiler: false, multi: false } },
-                { name: "SirHurt", version: "V5.421", unc: "sUNC", price: "$2.80 Weekly", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://sirhurt.net", discord: "https://discord.gg/sirhurt", purchase: "#", stats: { sunc: "96%", unc: "98%", decompiler: true, multi: true } },
-                { name: "Solara", version: "3.239", unc: "sUNC", price: "Free", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://solara.place", discord: "https://discord.gg/solara", purchase: null, stats: { sunc: "94%", unc: "96%", decompiler: true, multi: true } },
-                { name: "Xeno", version: "1.3.30", unc: "sUNC", price: "Free", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://xeno.place", discord: "https://discord.gg/xeno", purchase: null, stats: { sunc: "93%", unc: "95%", decompiler: true, multi: true } }
-            ],
-            mac: [
-                { name: "Hydrogen", version: "709.0870", unc: "sUNC (Key System)", price: "", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://hydrogen.place", discord: "https://discord.gg/hydrogen", purchase: null, stats: { sunc: "90%", unc: "99%", decompiler: true, multi: false } },
-                { name: "MacSploit", version: "1.9.9", unc: "sUNC", price: "$9.99 Lifetime", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://macsploit.com", discord: "https://discord.gg/macsploit", purchase: "#", stats: { sunc: "65%", unc: "70%", decompiler: true, multi: true } },
-                { name: "Opiumware", version: "v2.2.67", unc: "sUNC", price: "Free", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://opiumware.com", discord: "https://discord.gg/opiumware", purchase: null, stats: { sunc: "60%", unc: "65%", decompiler: false, multi: false } }
-            ],
-            android: [
-                { name: "Delta", version: "2.710.707", unc: "sUNC (Key System)", price: "", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://delta.place", discord: "https://discord.gg/delta", purchase: null, stats: { sunc: "85%", unc: "88%", decompiler: true, multi: true } },
-                { name: "Cryptic", version: "Version-2.710.707", unc: "sUNC (Key System)", price: "", updated: false, suncLink: "https://sunc.rubis.app/", website: "https://cryptic.place", discord: "https://discord.gg/cryptic", purchase: null, stats: { sunc: "70%", unc: "75%", decompiler: false, multi: false } },
-                { name: "Vega X", version: "2.713.911", unc: "Key System", price: "", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://vegax.place", discord: "https://discord.gg/vegax", purchase: null, stats: { sunc: "80%", unc: "82%", decompiler: true, multi: true } },
-                { name: "Codex", version: "2.705.924", unc: "sUNC", price: "Free", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://codex.place", discord: "https://discord.gg/codex", purchase: null, stats: { sunc: "88%", unc: "90%", decompiler: true, multi: true } }
-            ],
-            ios: [
-                { name: "Delta", version: "2.710.706", unc: "sUNC (Key System)", price: "", updated: true, suncLink: "https://sunc.rubis.app/", website: "https://delta.place", discord: "https://discord.gg/delta", purchase: null, stats: { sunc: "85%", unc: "88%", decompiler: true, multi: true } }
-            ]
-        };
+        let tosAgreed = false;
 
-        function renderExecutors() {
-            renderCategory('windows', executors.windows);
-            renderCategory('mac', executors.mac);
-            renderCategory('android', executors.android);
-            renderCategory('ios', executors.ios);
-        }
-
-        function renderCategory(id, data) {
-            const container = document.getElementById(`${id}-list`);
-            container.innerHTML = '';
-            
-            data.forEach((item, index) => {
-                const statusClass = item.updated ? 'status-updated' : 'status-not-updated';
-                const statusText = item.updated ? 'Updated' : 'Not Updated';
-                const borderClass = item.updated ? 'border-l-green-500' : 'border-l-red-500';
-                const priceBadge = item.price ? `<span class="price-badge">${item.price}</span>` : '';
-                
-                // sUNC Badge with purple 's'
-                let uncBadge = '';
-                if (item.unc) {
-                    const uncText = item.unc.replace('sUNC', '<span class="s-letter">s</span>UNC');
-                    uncBadge = `<a href="${item.suncLink}" target="_blank" rel="noopener noreferrer" class="unc-badge" title="View sUNC Results">${uncText} <i class="fas fa-external-link-alt text-[10px] ml-1"></i></a>`;
-                }
-                
-                const decompilerIcon = item.stats.decompiler ? '<i class="fas fa-check stat-good"></i>' : '<i class="fas fa-times stat-bad"></i>';
-                const multiIcon = item.stats.multi ? '<i class="fas fa-check stat-good"></i>' : '<i class="fas fa-times stat-bad"></i>';
-
-                const websiteLink = item.website || '#';
-                const discordLink = item.discord || '#';
-                const purchaseLink = item.purchase || '#';
-
-                // Conditional Purchase Button
-                let purchaseButton = '';
-                if (item.purchase) {
-                    purchaseButton = `
-                        <a href="${purchaseLink}" target="_blank" rel="noopener noreferrer" class="bg-dark-800 hover:bg-dark-600 border border-white/10 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                            <i class="fas fa-shopping-cart"></i> Purchase
-                        </a>
-                    `;
-                }
-
-                const html = `
-                    <div class="executor-card bg-dark-700 border-l-4 ${borderClass} border-y border-r border-white/5 rounded-xl p-4 group search-item" onclick="toggleCard(this)">
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 cursor-pointer">
-                            <div class="flex items-start gap-4 w-full">
-                                <button class="text-gray-500 hover:text-white mt-1 rotate-icon transition-transform duration-300"><i class="fas fa-chevron-right"></i></button>
-                                <div class="flex-grow">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <h3 class="text-lg font-bold text-white">${item.name}</h3>
-                                        <span class="version-badge">${item.version}</span>
-                                        ${uncBadge}
-                                        ${priceBadge}
-                                        <span class="status-badge ${statusClass}">${statusText}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pl-12 sm:pl-0">
-                                <button class="opacity-0 group-hover:opacity-100 bg-white/5 hover:bg-white/10 p-2 rounded-lg transition-all">
-                                    <i class="fas fa-external-link-alt text-gray-400"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="executor-content">
-                            <div class="bg-purple-900/20 border border-purple-500/20 rounded-lg p-3 mb-4 flex items-start gap-3">
-                                <i class="fas fa-info-circle text-purple-400 mt-1"></i>
-                                <p class="text-sm text-purple-200">This exploit bypasses client modification bans but potentially could cause bans in banwaves.</p>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <a href="${websiteLink}" target="_blank" rel="noopener noreferrer" class="bg-dark-800 hover:bg-dark-600 border border-white/10 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                                    <i class="fas fa-globe"></i> Website
-                                </a>
-                                <a href="${discordLink}" target="_blank" rel="noopener noreferrer" class="bg-dark-800 hover:bg-dark-600 border border-white/10 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                                    <i class="fab fa-discord"></i> Discord
-                                </a>
-                                ${purchaseButton}
-                            </div>
-
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm border-t border-white/5 pt-3">
-                                <div class="stat-item">sUNC: <span class="stat-value">${item.stats.sunc}</span></div>
-                                <div class="stat-item">UNC: <span class="stat-value">${item.stats.unc}</span></div>
-                                <div class="stat-item">Decompiler: ${decompilerIcon}</div>
-                                <div class="stat-item">Multi-Instance: ${multiIcon}</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
-        }
-
-        function toggleCard(card) {
-            // Close all other cards first
-            const allCards = document.querySelectorAll('.executor-card');
-            allCards.forEach(c => {
-                if (c !== card) {
-                    c.classList.remove('expanded');
-                }
-            });
-            
-            // Toggle the clicked card
-            card.classList.toggle('expanded');
-        }
-
-        function filterExecutors() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const items = document.getElementsByClassName('search-item');
-            const categories = document.getElementsByClassName('executor-category');
-
-            for (let i = 0; i < items.length; i++) {
-                const nameElement = items[i].querySelector('h3');
-                const txtValue = nameElement.textContent || nameElement.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
+        function attemptCopy() {
+            if (!tosAgreed) {
+                toggleTosModal();
+                return;
             }
-
-            for (let i = 0; i < categories.length; i++) {
-                const visibleItems = categories[i].getElementsByClassName('search-item');
-                let hasVisible = false;
-                for(let j=0; j<visibleItems.length; j++) {
-                    if(visibleItems[j].style.display !== "none") {
-                        hasVisible = true;
-                        break;
-                    }
-                }
-                categories[i].style.display = hasVisible ? "block" : "none";
-            }
+            copyCode();
         }
 
         function copyCode() {
@@ -847,6 +531,49 @@
             });
         }
 
+        function toggleTosModal() {
+            const modal = document.getElementById('tosModal');
+            const overlay = document.getElementById('tosOverlay');
+            const isClosing = modal.classList.contains('closing');
+
+            if (!isClosing && modal.classList.contains('active')) {
+                modal.classList.add('closing');
+                modal.classList.remove('active');
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    modal.classList.remove('closing');
+                    modal.style.display = 'none';
+                    overlay.style.display = 'none';
+                }, 300);
+            } else {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+                // Force reflow to ensure animation plays
+                modal.offsetHeight;
+                modal.classList.add('active');
+                overlay.classList.add('active');
+            }
+        }
+
+        function updateAgreeButton() {
+            const checkbox = document.getElementById('tosCheckbox');
+            const agreeBtn = document.getElementById('agreeBtn');
+            
+            if (checkbox.checked) {
+                agreeBtn.classList.add('active');
+            } else {
+                agreeBtn.classList.remove('active');
+            }
+        }
+
+        function agreeToTos() {
+            tosAgreed = true;
+            toggleTosModal();
+            // Reset checkbox for next time
+            document.getElementById('tosCheckbox').checked = false;
+            document.getElementById('agreeBtn').classList.remove('active');
+        }
+
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -854,60 +581,14 @@
             }
         }
 
-        function toggleThemeModal() {
-            const modal = document.getElementById('themeModal');
-            const overlay = document.getElementById('themeOverlay');
-            
-            if (modal.classList.contains('active')) {
-                modal.classList.remove('active');
-                overlay.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    overlay.style.display = 'none';
-                }, 300);
-            } else {
-                modal.style.display = 'block';
-                overlay.style.display = 'block';
-                setTimeout(() => {
-                    modal.classList.add('active');
-                    overlay.classList.add('active');
-                }, 10);
-            }
-        }
-
-        function setTheme(theme) {
-            const body = document.body;
-            body.setAttribute('data-theme', theme);
-            
-            if (theme === 'light') {
-                body.style.backgroundColor = '#f3f4f6';
-                body.style.color = '#1f2937';
-            } else if (theme === 'midnight') {
-                body.style.backgroundColor = '#0f172a';
-                body.style.color = '#e2e8f0';
-            } else if (theme === 'blue') {
-                body.style.backgroundColor = '#0a1628';
-                body.style.color = '#ffffff';
-            } else {
-                body.style.backgroundColor = '#050505';
-                body.style.color = '#ffffff';
-            }
-            
-            toggleThemeModal();
-        }
-
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 nav.classList.add('shadow-lg');
-                nav.classList.replace('bg-dark-900/80', 'bg-dark-900/95');
             } else {
                 nav.classList.remove('shadow-lg');
-                nav.classList.replace('bg-dark-900/95', 'bg-dark-900/80');
             }
         });
-
-        renderExecutors();
     </script>
 </body>
 </html>
